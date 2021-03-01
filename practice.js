@@ -15,8 +15,11 @@
 
 */
 
-function count(num){
-    // Code here
+function count(num) {
+  let initial = num
+  return function () {
+    return initial += 1; // Code here
+  };
 };
 
 
@@ -41,13 +44,17 @@ var newClosure = count(5);
  
 // Code here
     
-    
+    function greeting (name) {
+      return function (greeting) {
+        return `${greeting} ${name}`
+      }; 
+    };
 
 
 // After you have created the greeting function above, uncomment the code below, but do not edit it
 
-// const greetingClosure = greeting('Henry');
-// let greet = greetingClosure('Hello')
+const greetingClosure = greeting('Henry');
+let greet = greetingClosure('Hello')
     
 
 
@@ -65,6 +72,23 @@ var newClosure = count(5);
 
 // Code here
 
+function calculatorCreator () {
+  let total = 0; 
+  return {
+    add: function (num) {
+      return total = total+num;
+    },
+    subtract: function (num) {
+      return total = total-num;
+    },
+    multiply: function (num) {
+      return total = total*num;
+    },
+    divide: function (num) {
+      return total = total/num;
+    },
+  }
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -76,7 +100,13 @@ var newClosure = count(5);
 
 // Code here
 
-
+class Puppy {
+  constructor (happiness, energy, behavior) {
+    this.happiness = happiness;
+    this.energy = energy;
+    this.behavior = behavior;
+  }
+}
 
 ////////// PROBLEM 5 //////////
 /* 
@@ -89,6 +119,20 @@ var newClosure = count(5);
 
 // Code here
 
+class Car {
+  constructor (manufacturer, year) {
+    this.manufacturer = manufacturer;
+    this.year = year;
+  };
+
+  displayManufacturer() {
+    return this.manufacturer;
+  }
+
+  displayYear() {
+    return this.year;
+  }
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -103,3 +147,16 @@ var newClosure = count(5);
 */
 
 // Code here
+
+class Panda extends Puppy {
+  constructor (happiness, energy, behavior) {
+    super(happiness,energy,behavior);
+  }; 
+  getsTreat() {
+    return this.happiness+=20; 
+  };
+  takesNap() {
+    this.energy-=45; 
+    this.behavior+=15; 
+  };
+}
